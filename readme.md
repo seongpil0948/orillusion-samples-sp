@@ -1,3 +1,8 @@
+# Refer
+- https://www.orillusion.com/en/guide/getting_start/draw_cube.html
+- https://github.com/Orillusion/orillusion-webgpu-samples
+
+
 ![Cover Art](https://github.com/Orillusion/orillusion-webgpu-samples/blob/main/logo.png)
 
 # Orillusion-webgpu-samples

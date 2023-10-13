@@ -13,10 +13,10 @@
         "preview": "vite preview"
     },
     "devDependencies": {
-        "@types/dom-webcodecs": "^0.1.7",
-        "@webgpu/types": "^0.1.32",
+        "@types/dom-webcodecs": "^0.1.8",
+        "@webgpu/types": "^0.1.38",
         "gl-matrix": "^3.4.3",
-        "typescript": "^5.1.0-dev.20230508",
-        "vite": "^4.3.5"
+        "typescript": "^5.2.2",
+        "vite": "^4.4.11"
     }
 }
