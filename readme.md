@@ -1,6 +1,18 @@
 # Refer
+### Orillusion
 - https://www.orillusion.com/en/guide/getting_start/draw_cube.html
 - https://github.com/Orillusion/orillusion-webgpu-samples
+### WebGPU
+- https://webgpufundamentals.org/webgpu/lessons/
+- https://github.com/gpuweb/types
+- https://glitch.com/edit/#!/your-first-webgpu-app?path=README.md%3A1%3A0
+- https://codelabs.developers.google.com/your-first-webgpu-app?hl=ko#4
+### WGSL
+- https://webgpufundamentals.org/webgpu/lessons/webgpu-wgsl.html
+- 
+### WebGL
+- https://dev.opera.com/articles/introduction-to-webgl-part-1/
+
 
 
 ![Cover Art](https://github.com/Orillusion/orillusion-webgpu-samples/blob/main/logo.png)
