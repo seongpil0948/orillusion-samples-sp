@@ -18,5 +18,8 @@
         "gl-matrix": "^3.4.3",
         "typescript": "^5.2.2",
         "vite": "^4.4.11"
+    },
+    "dependencies": {
+        "@orillusion/core": "^0.6.9"
     }
 }

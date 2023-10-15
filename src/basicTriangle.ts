@@ -67,7 +67,7 @@ function draw(
     colorAttachments: [
       {
         view: view,
-        clearValue: { r: 0, g: 0, b: 0, a: 1.0 },
+        clearValue: { r: 0, g: 1, b: 0, a: 1.0 },
         loadOp: "clear", // clear/load
         storeOp: "store", // store/discard
       },
@@ -91,11 +91,31 @@ async function run() {
   draw(device, context, pipeline);
 
   // re-configure context on resize
-  window.addEventListener("resize", () => {
-    canvas.width = canvas.clientWidth * devicePixelRatio;
-    canvas.height = canvas.clientHeight * devicePixelRatio;
-    // don't need to recall context.configure() after v104
-    draw(device, context, pipeline);
+  // window.addEventListener("resize", () => {
+  //   console.log("in resize: ", canvas);
+  //   canvas.width = canvas.clientWidth * devicePixelRatio;
+  //   canvas.height = canvas.clientHeight * devicePixelRatio;
+  //   // don't need to recall context.configure() after v104
+  //   draw(device, context, pipeline);
+  // });
+  const observer = new ResizeObserver((entries) => {
+    console.log("in resize observer: ", entries);
+    for (const entry of entries) {
+      const canvas = entry.target as HTMLCanvasElement;
+      const width = entry.contentBoxSize[0].inlineSize;
+      const height = entry.contentBoxSize[0].blockSize;
+      canvas.width = Math.max(
+        1,
+        Math.min(width, device.limits.maxTextureDimension2D)
+      );
+      canvas.height = Math.max(
+        1,
+        Math.min(height, device.limits.maxTextureDimension2D)
+      );
+      // re-render
+      draw(device, context, pipeline);
+    }
   });
+  observer.observe(canvas);
 }
 run();

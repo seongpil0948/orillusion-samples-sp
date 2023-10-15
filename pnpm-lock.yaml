@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@orillusion/core':
+    specifier: ^0.6.9
+    version: 0.6.9
+
 devDependencies:
   '@types/dom-webcodecs':
     specifier: ^0.1.8
@@ -220,6 +225,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@orillusion/core@0.6.9:
+    resolution: {integrity: sha512-AYBqDUe8eykv1RX6oGM0iirhX1Rz05rme0GV1jNNP3DgfuxuOspW8II7ZYMwGdFpjNUsLBpJWRPRhv8WosbcxA==}
+    dev: false
 
   /@types/dom-webcodecs@0.1.8:
     resolution: {integrity: sha512-KThTPaGQJLITk8Q0XkEkz+GqFdoWDyQfbyeJmfEUagB15TZQdNx5AqP2b7GP6vkVM6X/6T1Z8EHxA8RgHfY9BA==}
