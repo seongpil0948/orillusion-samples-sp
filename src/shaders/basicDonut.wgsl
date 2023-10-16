@@ -1,37 +1,40 @@
 // declared a uniform variable with a type of that struct
 struct OurStruct {
   color: vec4f,
-  // scale: vec2f,
   offset: vec2f,
 };
-@group(0) @binding(0) var<uniform> ourStruct: OurStruct;
 
 struct OtherStruct {
   scale: vec2f,
 };
 
-struct OurVertexShaderOutput {
-    //  different meaning in a vertex shader vs a fragment shader.
-  // That field is NOT an inter-stage variable.
+@group(0) @binding(0) var<storage, read> ourStructs: array<OurStruct>;
+@group(0) @binding(1) var<storage, read> otherStructs: array<OtherStruct>;
+
+struct VSOutput {
   @builtin(position) position: vec4f,
-};
+  @location(0) color: vec4f,
+}
+ 
 
 @vertex fn vs(
-  @builtin(vertex_index) vertexIndex : u32
-) -> OurVertexShaderOutput {
-    // In a vertex shader @builtin(position) is 
-  // the output that the GPU needs to draw triangles/lines/points
+  @builtin(vertex_index) vertexIndex : u32,
+  // we can pass a second argument for number of instances and for each instance drawn,
+  @builtin(instance_index) instanceIndex: u32
+) -> VSOutput {
+  let otherStruct = otherStructs[instanceIndex];
+  let ourStruct = ourStructs[instanceIndex];
   let pos = array(
     vec2f( 0.0,  0.5),  // top center
     vec2f(-0.5, -0.5),  // bottom left
     vec2f( 0.5, -0.5)   // bottom right
-  );
-
-  var vsOutput: OurVertexShaderOutput;
+  );  
+  var vsOut: VSOutput;
+  vsOut.position = vec4f(
   // by scale and then add an offset
-  vsOutput.position = vec4f(pos[vertexIndex] * otherStruct.scale + ourStruct.offset, 0.0, 1.0);
-          // pos[vertexIndex] * ourStruct.scale + ourStruct.offset, 
-  return vsOutput;
+      pos[vertexIndex] * otherStruct.scale + ourStruct.offset, 0.0, 1.0);
+  vsOut.color = ourStruct.color;
+  return vsOut;
 }
 
   // @location(2) @interpolate(linear, center) myVariableFoo: vec4f;
